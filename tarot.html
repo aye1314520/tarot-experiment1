@@ -146,69 +146,70 @@
     </div>
 
     <script>
-        // 获取URL参数
-        const urlParams = new URLSearchParams(window.location.search);
-        const userId = urlParams.get('id') || '未指定';
-        const group = urlParams.get('group') || 'positive'; // 分组参数在此读取
+    // 获取URL参数
+    const urlParams = new URLSearchParams(window.location.search);
+    const userId = urlParams.get('id') || '未指定';
+    const group = urlParams.get('group') || 'positive'; // 分组参数在此读取
 
-        // 定义两组牌的内容
-        const cardSets = {
-            positive: {
-                cards: [
-                    { imageUrl: "https://github.com/aye1314520/tarot-experiment/blob/main/image/bei.jpg?raw=true", title: "过去：圣杯九（正位）", text: "这张牌代表过去阶段，你在相关领域已经积累了一定的基础与满足感。之前的努力为你带来了积极的反馈和成就感，这为现在的发展奠定了良好的根基。" },
-                    { imageUrl: "https://github.com/aye1314520/tarot-experiment/blob/main/image/yang.jpg?raw=true", title: "现在：太阳（正位）", text: "这张牌显示你目前正处于充满活力与光明的阶段。事情进展顺利，前景明朗，你拥有足够的能量和乐观心态去推进目标。这是一个适合积极行动、展现自我能力的好时机。" },
-                    { imageUrl: "https://github.com/aye1314520/tarot-experiment/blob/main/image/jie.jpg?raw=true", title: "未来：世界（正位）", text: "这张牌预示未来你将达成圆满与整合。你的目标有望顺利实现，并获得应有的回报与成就感。这是一个充满和谐与成功的未来愿景。" }
-                ],
-                summary: "综合来看，你的目标在过去已打下良好基础，现在正处于积极发展的阶段，未来将迎来圆满成功。这是一个非常积极的信号，鼓励你保持信心，继续努力，抓住眼前的机遇。"
-            },
-            negative: {
-                cards: [
-                    { imageUrl: "https://github.com/aye1314520/tarot-experiment/blob/main/image/jian.jpg?raw=true", title: "过去：宝剑五（逆位）", text: "这张牌反映过去阶段，你在相关领域可能经历了一些冲突或挫败。这些经历可能让你感到困惑或失落，对目标的推进产生了一定的阻碍。" },
-                    { imageUrl: "https://github.com/aye1314520/tarot-experiment/blob/main/image/yue.jpg?raw=true", title: "现在：月亮（逆位）", text: "这张牌显示你目前可能处于一种不确定或焦虑的状态。事情的发展方向不够清晰，可能存在一些潜在的阻碍或误解，让你感到困惑与不安。" },
-                    { imageUrl: "https://github.com/aye1314520/tarot-experiment/blob/main/image/ta.jpg?raw=true", title: "未来：塔（逆位）", text: "这张牌预示未来可能会遇到突如其来的变化或挑战。虽然这可能带来一定的压力，但也提醒你需要提前做好准备，灵活应对可能的变化。" }
-                ],
-                summary: "整体来看，你的目标在过去遇到了一些阻碍，现在正处在一种不确定的状态中，未来则需要警惕可能的挑战与变化。这是一个需要你谨慎思考、稳扎稳打的阶段，建议多做一些准备与规划。"
-            }
-        };
-        
-        let flippedCards = 0;
-        const currentSet = cardSets[group];
-        
-        function flipCard(cardNumber) {
-            if (cardNumber !== flippedCards + 1) {
-                alert(`请先翻开第 ${flippedCards + 1} 张牌`);
-                return;
-            }
-            document.getElementById(`card${cardNumber}`).style.display = 'none';
-            const cardBack = document.getElementById(`card${cardNumber}-back`);
-            cardBack.style.display = 'block';
-            
-            const currentCard = currentSet.cards[cardNumber-1];
-            document.getElementById(`card${cardNumber}-image`).src = currentCard.imageUrl;
-            document.getElementById(`card${cardNumber}-title`).textContent = currentCard.title;
-            document.getElementById(`card${cardNumber}-text`).textContent = currentCard.text;
-            
-            flippedCards++;
-            if (flippedCards < 3) {
-                document.getElementById('instruction').textContent = `请点击第 ${flippedCards + 1} 张牌（${flippedCards === 1 ? '现在' : '未来'}）`;
-            }
-            if (flippedCards === 3) {
-                setTimeout(() => {
-                    document.getElementById('interpretation-text').textContent = currentSet.summary;
-                    document.getElementById('interpretation').style.display = 'block';
-                    document.getElementById('instruction').style.display = 'none';
-                }, 500);
-            }
+    // 定义两组牌的内容 (图片链接已更新为带 ?raw=true 的格式)
+    const cardSets = {
+        positive: {
+            cards: [
+                { imageUrl: "https://github.com/aye1314520/tarot-experiment1/blob/main/image/bei.jpg?raw=true", title: "过去：圣杯九（正位）", text: "这张牌代表过去阶段，你在相关领域已经积累了一定的基础与满足感。之前的努力为你带来了积极的反馈和成就感，这为现在的发展奠定了良好的根基。" },
+                { imageUrl: "https://github.com/aye1314520/tarot-experiment1/blob/main/image/yang.jpg?raw=true", title: "现在：太阳（正位）", text: "这张牌显示你目前正处于充满活力与光明的阶段。事情进展顺利，前景明朗，你拥有足够的能量和乐观心态去推进目标。这是一个适合积极行动、展现自我能力的好时机。" },
+                { imageUrl: "https://github.com/aye1314520/tarot-experiment1/blob/main/image/jie.jpg?raw=true", title: "未来：世界（正位）", text: "这张牌预示未来你将达成圆满与整合。你的目标有望顺利实现，并获得应有的回报与成就感。这是一个充满和谐与成功的未来愿景。" }
+            ],
+            summary: "综合来看，你的目标在过去已打下良好基础，现在正处于积极发展的阶段，未来将迎来圆满成功。这是一个非常积极的信号，鼓励你保持信心，继续努力，抓住眼前的机遇。"
+        },
+        negative: {
+            cards: [
+                { imageUrl: "https://github.com/aye1314520/tarot-experiment1/blob/main/image/jian.jpg?raw=true", title: "过去：宝剑五（逆位）", text: "这张牌反映过去阶段，你在相关领域可能经历了一些冲突或挫败。这些经历可能让你感到困惑或失落，对目标的推进产生了一定的阻碍。" },
+                { imageUrl: "https://github.com/aye1314520/tarot-experiment1/blob/main/image/yue.jpg?raw=true", title: "现在：月亮（逆位）", text: "这张牌显示你目前可能处于一种不确定或焦虑的状态。事情的发展方向不够清晰，可能存在一些潜在的阻碍或误解，让你感到困惑与不安。" },
+                { imageUrl: "https://github.com/aye1314520/tarot-experiment1/blob/main/image/ta.jpg?raw=true", title: "未来：塔（逆位）", text: "这张牌预示未来可能会遇到突如其来的变化或挑战。虽然这可能带来一定的压力，但也提醒你需要提前做好准备，灵活应对可能的变化。" }
+            ],
+            summary: "整体来看，你的目标在过去遇到了一些阻碍，现在正处在一种不确定的状态中，未来则需要警惕可能的挑战与变化。这是一个需要你谨慎思考、稳扎稳打的阶段，建议多做一些准备与规划。"
         }
-        
-        function returnToSurvey() {
-            // ====== 重要：请修改下方引号内的链接为你的真实见数问卷链接 ======
-            const baseUrl = "https://www.credamo.cn/s/你的问卷ID";
-            // ===========================================================
-            const returnUrl = `${baseUrl}?user=${userId}&completed=1&source=tarot`;
-            window.location.href = returnUrl;
-            setTimeout(() => { alert("如果页面没有自动跳转，请手动返回问卷继续作答"); }, 1000);
+    };
+    
+    let flippedCards = 0;
+    const currentSet = cardSets[group];
+    
+    function flipCard(cardNumber) {
+        if (cardNumber !== flippedCards + 1) {
+            alert(`请先翻开第 ${flippedCards + 1} 张牌`);
+            return;
         }
-    </script>
+        document.getElementById(`card${cardNumber}`).style.display = 'none';
+        const cardBack = document.getElementById(`card${cardNumber}-back`);
+        cardBack.style.display = 'block';
+        
+        const currentCard = currentSet.cards[cardNumber-1];
+        document.getElementById(`card${cardNumber}-image`).src = currentCard.imageUrl;
+        document.getElementById(`card${cardNumber}-title`).textContent = currentCard.title;
+        document.getElementById(`card${cardNumber}-text`).textContent = currentCard.text;
+        
+        flippedCards++;
+        if (flippedCards < 3) {
+            document.getElementById('instruction').textContent = `请点击第 ${flippedCards + 1} 张牌（${flippedCards === 1 ? '现在' : '未来'}）`;
+        }
+        if (flippedCards === 3) {
+            setTimeout(() => {
+                document.getElementById('interpretation-text').textContent = currentSet.summary;
+                document.getElementById('interpretation').style.display = 'block';
+                document.getElementById('instruction').style.display = 'none';
+            }, 500);
+        }
+    }
+    
+    function returnToSurvey() {
+        // ====== 重要：请修改下方引号内的链接为你的真实见数问卷链接 ======
+        const baseUrl = "https://www.credamo.cn/s/你的问卷ID";
+        // ===========================================================
+        const returnUrl = `${baseUrl}?user=${userId}&completed=1&source=tarot`;
+        window.location.href = returnUrl;
+        setTimeout(() => { alert("如果页面没有自动跳转，请手动返回问卷继续作答"); }, 1000);
+    }
+</script>
 </body>
+
 </html>
